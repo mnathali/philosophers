@@ -12,6 +12,20 @@
 
 #include "philos.h"
 
+void	my_sleep(int n)
+{
+	struct timeval	tv;
+	long			i;
+
+	gettimeofday(&tv, 0);
+	i = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	while (i + n / 1000 > tv.tv_sec * 1000 + tv.tv_usec / 1000)
+	{
+		gettimeofday(&tv, 0);
+		usleep(10);
+	}
+}
+
 void	ft_cleardata(t_list_chops **lst, pthread_t **t, long i)
 {
 	t_list_chops	*fre;

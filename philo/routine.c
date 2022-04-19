@@ -6,7 +6,7 @@
 /*   By: mnathali <mnathali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 11:59:42 by mnathali          #+#    #+#             */
-/*   Updated: 2022/04/18 02:19:45 by mnathali         ###   ########.fr       */
+/*   Updated: 2022/04/18 14:24:48 by mnathali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	eat_and_sleep(t_list_chops *philosopher, struct timeval *tv)
 {
 	print("%ld %d has taken a fork\n", philosopher);
 	print("%ld %d is eating\n", philosopher);
-	usleep(philosopher->info[2]);
+	my_sleep(philosopher->info[2]);
 	unlock_all(philosopher);
 	gettimeofday(tv, 0);
 	if (philosopher->times_of_eat > 0)
@@ -48,7 +48,7 @@ void	eat_and_sleep(t_list_chops *philosopher, struct timeval *tv)
 	if (philosopher->info[5] != -1)
 	{
 		print("%ld %d is sleeping\n", philosopher);
-		usleep(philosopher->info[3]);
+		my_sleep(philosopher->info[3]);
 	}
 	return ;
 }
@@ -60,7 +60,7 @@ void	*philosophers_routine(void *data)
 
 	philosopher = (t_list_chops *)data;
 	while (philosopher->info[5] == 1)
-		usleep(1);
+		my_sleep(1);
 	while (philosopher->info[5] == 0)
 	{
 		first_fork(philosopher, pthread_mutex_lock);

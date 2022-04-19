@@ -37,5 +37,6 @@ void	ft_solve_problem(const char **argv);
 void	*philosophers_routine(void *data);
 void	*philosophers_time(void *gather);
 char	print(char *str, t_list_chops *philosopher);
+void	my_sleep(int n);
 
 #endif

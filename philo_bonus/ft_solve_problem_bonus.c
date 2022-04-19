@@ -70,7 +70,7 @@ void	initialize_sem(unsigned int i, sem_t **semaphore)
 
 void	ft_you_father(sem_t **semaphore, int i, long info)
 {
-	usleep(200000 * info);
+	my_sleep(200000 * info);
 	while (i)
 	{
 		sem_post(semaphore[5]);

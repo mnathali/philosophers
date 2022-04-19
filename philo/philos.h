@@ -40,6 +40,6 @@ void			*philosophers_routine(void *data);
 void			*philosophers_time(void *data);
 char			print(char *str, t_list_chops *philosopher);
 void			ft_cleardata(t_list_chops **lst, pthread_t **t, long i);
-char			everybodys_time(struct timeval *tv, t_list_chops *philosopher);
+void			my_sleep(int n);
 
 #endif

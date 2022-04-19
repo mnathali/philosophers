@@ -12,6 +12,20 @@
 
 #include "philos_bonus.h"
 
+void	my_sleep(int n)
+{
+	struct timeval	tv;
+	long			i;
+
+	gettimeofday(&tv, 0);
+	i = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	while (i + n / 1000 > tv.tv_sec * 1000 + tv.tv_usec / 1000)
+	{
+		gettimeofday(&tv, 0);
+		usleep(10);
+	}
+}
+
 short	check_args(const char *str)
 {
 	int	i;

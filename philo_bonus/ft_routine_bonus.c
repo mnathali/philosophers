@@ -27,16 +27,16 @@ void	*philosophers_time(void *gather)
 			- data->info[6] > data->info[5])
 		{
 			data->info[5] = -1;
+			if (data->info[0] == 1)
+				sem_post(data->semaphore[0]);
 			sem_wait(data->semaphore[2]);
 			while (i--)
 				sem_post(data->semaphore[3]);
 			print("%ld %d died\n", data);
-			if (data->info[0] == 1)
-				sem_post(data->semaphore[0]);
 			sem_post(data->semaphore[2]);
 			break ;
 		}
-		usleep(1000);
+		my_sleep(1000);
 	}
 	return (0);
 }
@@ -57,7 +57,7 @@ void	cut_this_func(t_list_chops *philosopher)
 	if (philosopher->info[5] == -1)
 		return ;
 	print("%ld %d is eating\n", philosopher);
-	usleep(philosopher->info[2]);
+	my_sleep(philosopher->info[2]);
 	if (philosopher->info[5] == -1)
 		return ;
 	philosopher->info[4]--;
@@ -66,7 +66,7 @@ void	cut_this_func(t_list_chops *philosopher)
 	sem_post(philosopher->semaphore[0]);
 	sem_post(philosopher->semaphore[0]);
 	print("%ld %d is sleeping\n", philosopher);
-	usleep(philosopher->info[3]);
+	my_sleep(philosopher->info[3]);
 	if (philosopher->info[5] == -1)
 		return ;
 	print("%ld %d is thinking\n", philosopher);

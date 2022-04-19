@@ -27,17 +27,22 @@ char	check_times_of_eat(t_list_chops	*philosopher)
 	return (1);
 }
 
-char	everybodys_time(struct timeval *tv, t_list_chops *philosopher)
+char	everybodys_time(struct timeval *tv, t_list_chops **data)
 {
-	short	i;
+	short			i;
+	t_list_chops	*philosopher;
 
 	i = 0;
+	philosopher = *data;
 	gettimeofday(tv, 0);
 	while (i != philosopher->info[0])
 	{
 		if (tv->tv_sec * 1000 + tv->tv_usec / 1000
 			- philosopher->info[6] > philosopher->time_to_die)
+		{
+			*data = philosopher;
 			return (1);
+		}
 		philosopher = philosopher->next;
 		i++;
 	}
@@ -51,10 +56,10 @@ void	*philosophers_time(void *data)
 
 	philosopher = (t_list_chops *)data;
 	while (philosopher->info[5] == 1)
-		usleep(1);
+		my_sleep(1);
 	while (philosopher->info[5] != -1)
 	{
-		if (philosopher->time_to_die > 0 && everybodys_time(&tv, data))
+		if (philosopher->time_to_die > 0 && everybodys_time(&tv, &philosopher))
 		{
 			philosopher->info[5] = -1;
 			if (print("%ld %d died\n", philosopher) && philosopher->info[0] == 1)
@@ -66,6 +71,7 @@ void	*philosophers_time(void *data)
 			philosopher->info[5] = -1;
 			break ;
 		}
+		my_sleep(1000);
 	}
 	return (0);
 }
