@@ -6,7 +6,7 @@
 /*   By: mnathali <mnathali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 01:04:35 by mnathali          #+#    #+#             */
-/*   Updated: 2022/04/15 22:28:23 by mnathali         ###   ########.fr       */
+/*   Updated: 2022/04/20 21:34:49 by mnathali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ short	read_args(long *info, const char **argv, pthread_t **t,
 		return (1);
 	info[0] = ft_atoi_long(argv[1]);
 	info[1] = ft_atoi_long(argv[2]);
-	info[2] = ft_atoi_long(argv[3]) * 1000;
-	info[3] = ft_atoi_long(argv[4]) * 1000;
+	info[2] = ft_atoi_long(argv[3]);
+	info[3] = ft_atoi_long(argv[4]);
 	if (argv[5])
 		info[4] = ft_atoi_long(argv[5]);
 	else

@@ -6,7 +6,7 @@
 /*   By: mnathali <mnathali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 22:22:10 by mnathali          #+#    #+#             */
-/*   Updated: 2022/04/18 01:42:50 by mnathali         ###   ########.fr       */
+/*   Updated: 2022/04/20 15:26:40 by mnathali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	my_sleep(int n)
 
 	gettimeofday(&tv, 0);
 	i = tv.tv_sec * 1000 + tv.tv_usec / 1000;
-	while (i + n / 1000 > tv.tv_sec * 1000 + tv.tv_usec / 1000)
+	while (i + n > tv.tv_sec * 1000 + tv.tv_usec / 1000)
 	{
 		gettimeofday(&tv, 0);
 		usleep(10);

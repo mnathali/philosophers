@@ -6,7 +6,7 @@
 /*   By: mnathali <mnathali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 22:28:30 by mnathali          #+#    #+#             */
-/*   Updated: 2022/04/15 22:28:46 by mnathali         ###   ########.fr       */
+/*   Updated: 2022/04/20 21:33:38 by mnathali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	*philosophers_time(void *data)
 
 	philosopher = (t_list_chops *)data;
 	while (philosopher->info[5] == 1)
-		my_sleep(1);
+		usleep(1);
 	while (philosopher->info[5] != -1)
 	{
 		if (philosopher->time_to_die > 0 && everybodys_time(&tv, &philosopher))
@@ -71,7 +71,7 @@ void	*philosophers_time(void *data)
 			philosopher->info[5] = -1;
 			break ;
 		}
-		my_sleep(1000);
+		my_sleep(1);
 	}
 	return (0);
 }

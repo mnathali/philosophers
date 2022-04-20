@@ -6,7 +6,7 @@
 /*   By: mnathali <mnathali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 11:59:42 by mnathali          #+#    #+#             */
-/*   Updated: 2022/04/18 14:24:48 by mnathali         ###   ########.fr       */
+/*   Updated: 2022/04/20 21:34:12 by mnathali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	*philosophers_routine(void *data)
 
 	philosopher = (t_list_chops *)data;
 	while (philosopher->info[5] == 1)
-		my_sleep(1);
+		usleep(1);
 	while (philosopher->info[5] == 0)
 	{
 		first_fork(philosopher, pthread_mutex_lock);

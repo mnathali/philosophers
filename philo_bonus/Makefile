@@ -6,7 +6,7 @@
 #    By: mnathali <mnathali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 22:42:04 by mnathali          #+#    #+#              #
-#    Updated: 2022/04/18 01:31:22 by mnathali         ###   ########.fr        #
+#    Updated: 2022/04/20 21:51:28 by mnathali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,3 +38,5 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
